@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Passwordy</string>
+    <string name="info_Text">This application will help you generate a strong password in order to secure your accounts on various social sites \n
+
+Please make sure that you save the password somewhere as passwordy does  not save it for you .\n
+
+
+About the developers-\n
+This app is developed by two amateurs as a practice project . Thus it may have concerning flaws .\n
+
+However we would love to have your suggestions .\n
+ Developed by  <a href="https://www.instagram.com/virat.mishra24/">@virat.mishra24</a> and <a href="https://www.instagram.com/rickykapoor__27/">@rickykapoor__27</a> </string>
+</resources>
