@@ -28,7 +28,7 @@ public class about_Page extends AppCompatActivity {
         });
         setupHyperlink();
     }
-    private void setupHyperlink() {
+    public void setupHyperlink() {
         TextView linkTextView = findViewById(R.id.textView4);
         linkTextView.setMovementMethod(LinkMovementMethod.getInstance());
     }

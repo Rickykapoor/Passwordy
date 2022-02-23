@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,32 +33,34 @@ public class Complex extends AppCompatActivity {
             public void onClick(View v) {
 
                 EditText lengt = (EditText) findViewById(R.id.editTextNumber);
-                String len= lengt.getText().toString();
-                int length = Integer.parseInt(len);
+                if (!TextUtils.isEmpty(lengt.getText().toString())) {
+                    String len = lengt.getText().toString();
+                    int length = Integer.parseInt(len);
 
 
+                    TextView ypi = (TextView) findViewById(R.id.textView7);
+                    ypi.setText("Your Password is\uD83D\uDC47");
 
-                TextView ypi = (TextView) findViewById(R.id.textView7);
-                ypi.setText("Your Password is\uD83D\uDC47");
+                    if (length < 7 || length > 129) {
 
-                if(length<7||length>129) {
+                        Context context = getApplicationContext();
+                        CharSequence text = "Please enter length between 8 to 128 in order to meet securty standards";
+                        int duration = Toast.LENGTH_SHORT;
 
-                    Context context = getApplicationContext();
-                    CharSequence text = "Please enter length between 8 to 128 in order to meet securty standards";
-                    int duration = Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
 
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
-
+                    } else {
+                        complex_method C = new complex_method();
+                        password = C.complexpassword(length);
+                        passwordDisplay.setText(password);
+                        String pass = passwordDisplay.getText().toString();
+                        pass = password;
+                    }
                 }
-                else{
-                    complex_method C = new complex_method();
-                    password = C.complexpassword(length);
-                    passwordDisplay.setText(password);
-                    String pass = passwordDisplay.getText().toString();
-                    pass = password;
+                else {
+                    Toast.makeText(getApplicationContext(), "Length is empty", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 

@@ -7,6 +7,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         complex.setTypeface(tf);
         simple1.setTypeface(tf);
         simple2.setTypeface(tf);
-        FloatingActionButton infoButton = (FloatingActionButton) findViewById(R.id.floatingActionButton);
+        ImageButton infoButton = (ImageButton) findViewById(R.id.image_button_info);
 
 
 

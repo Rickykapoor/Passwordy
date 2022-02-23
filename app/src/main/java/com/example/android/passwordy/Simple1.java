@@ -1,12 +1,11 @@
 package com.example.android.passwordy;
 
-import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.text.Editable;
+
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -30,38 +29,42 @@ public class Simple1 extends AppCompatActivity {
         TextView passwordDisplay = (TextView) findViewById(R.id.textView6);
 
         Button gen = (Button) findViewById(R.id.button);
+
+
         gen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 EditText lengt = (EditText) findViewById(R.id.editTextNumber);
-                String len= lengt.getText().toString();
-                int length = Integer.parseInt(len);
+                if (!TextUtils.isEmpty(lengt.getText().toString())) {
+                    String len = lengt.getText().toString();
+                    int length = Integer.parseInt(len);
+                    TextView ypi = (TextView) findViewById(R.id.textView7);
 
 
+                    if (length < 7 || length > 129 || lengt == null) {
 
-                 TextView ypi = (TextView) findViewById(R.id.textView7);
-                 ypi.setText("Your Password is\uD83D\uDC47");
+                        Context context = getApplicationContext();
+                        CharSequence text = "Please enter length between 8 to 128 in order to meet securty standards";
+                        int duration = Toast.LENGTH_SHORT;
 
-                if(length<7||length>129) {
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
 
-                    Context context = getApplicationContext();
-                    CharSequence text = "Please enter length between 8 to 128 in order to meet securty standards";
-                    int duration = Toast.LENGTH_SHORT;
-
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
-
+                    } else {
+                        simple_one s1 = new simple_one();
+                        password = s1.simple1password(length);
+                        ypi.setText("Your Password is\uD83D\uDC47");
+                        passwordDisplay.setText(password);
+                        String pass = passwordDisplay.getText().toString();
+                        pass = password;
+                    }
                 }
-            else{
-                    simple_one s1 = new simple_one();
-                    password = s1.simple1password(length);
-                    passwordDisplay.setText(password);
-                    String pass = passwordDisplay.getText().toString();
-                    pass = password;
+                else {
+                        Toast.makeText(getApplicationContext(), "Length is empty", Toast.LENGTH_SHORT).show();
+                }
             }
 
-            }
+
         });
 
             Button copyToClip = (Button) findViewById(R.id.button2);
